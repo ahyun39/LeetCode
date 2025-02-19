@@ -32,5 +32,5 @@ FROM
     all_trans A
 LEFT JOIN 
     approved B 
-    ON COALESCE(A.country, 'COUNTRY_NULL') = COALESCE(B.country, 'COUNTRY_NULL') 
+    ON COALESCE(A.country, 'NULL') = COALESCE(B.country, 'NULL') 
     AND A.month = B.month;
