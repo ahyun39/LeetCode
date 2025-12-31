@@ -1,9 +1,14 @@
-WITH attend_class AS(
-    SELECT student_id, subject_name, SUM(1) AS attended_exams
+SELECT 
+    s.student_id, 
+    s.student_name, 
+    sub.subject_name, 
+    IFNULL(e.cnt, 0) AS attended_exams
+FROM Students s
+CROSS JOIN Subjects sub
+LEFT JOIN (
+    -- 시험 기록을 미리 집계하여 조인할 데이터 양을 축소
+    SELECT student_id, subject_name, COUNT(*) AS cnt
     FROM Examinations
     GROUP BY student_id, subject_name
-)
-
-SELECT A.student_id, A.student_name, A.subject_name, CASE WHEN C.attended_exams IS NULL THEN 0 ELSE C.attended_exams END AS attended_exams
-FROM (Students CROSS JOIN Subjects) AS A LEFT JOIN attend_class C ON A.student_id = C.student_id AND A.subject_name = C.subject_name
-ORDER BY A.student_id, A.subject_name;
+) e ON s.student_id = e.student_id AND sub.subject_name = e.subject_name
+ORDER BY s.student_id, sub.subject_name;
