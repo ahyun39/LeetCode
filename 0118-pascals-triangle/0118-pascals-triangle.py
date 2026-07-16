@@ -1,19 +1,15 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        ans = []
-        for i in range(1, numRows+1):
-            if i == 1:
-                ans.append([1])
-            elif i == 2:
-                ans.append([1, 1])
-            else:
-                l = []
-                for j in range(i):
-                    if j == 0:
-                        l.append(1)
-                    elif j == i-1:
-                        l.append(1)
-                    else:
-                        l.append(ans[i-2][j-1] + ans[i-2][j])
-                ans.append(l)
-        return ans
+        dp = []
+
+        for i in range(numRows):
+            # 현재 행을 모두 1로 초기화
+            row = [1] * (i + 1)
+
+            # 양 끝을 제외한 내부 값 계산
+            for j in range(1, i):
+                row[j] = dp[i - 1][j - 1] + dp[i - 1][j]
+
+            dp.append(row)
+
+        return dp
