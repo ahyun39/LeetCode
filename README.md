@@ -15,8 +15,13 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0070-climbing-stairs](https://github.com/ahyun39/LeetCode/tree/main/0070-climbing-stairs/) | Easy |
+| [0118-pascals-triangle](https://github.com/ahyun39/LeetCode/tree/main/0118-pascals-triangle/) | Easy |
 ## Memoization
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0070-climbing-stairs](https://github.com/ahyun39/LeetCode/tree/main/0070-climbing-stairs/) | Easy |
+## Array
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0118-pascals-triangle](https://github.com/ahyun39/LeetCode/tree/main/0118-pascals-triangle/) | Easy |
 <!---LeetCode Topics End-->
